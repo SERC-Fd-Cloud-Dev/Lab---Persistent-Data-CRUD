@@ -1,0 +1,8 @@
+{
+    // import organisational copilot settings
+    "github.copilot.chat.organizationCustomAgents.enabled": true,
+    "github.copilot.chat.organizationInstructions.enabled": true,
+    // disable inline autocomplete suggstions from Copilot
+    "editor.inlineSuggest.enabled": false,
+    "github.copilot.nextEditSuggestions.enabled": false
+}
