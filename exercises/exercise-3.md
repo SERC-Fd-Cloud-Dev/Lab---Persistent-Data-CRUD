@@ -52,6 +52,28 @@ request, and is not the response data contract.
    cached entry. If you chose to cache the equipment list instead, POST would
    also require invalidating that list.
 
+### Worked example: return a cached snapshot
+
+The hit branch can use the snapshot already stored under the integer id. This
+partial route fragment assumes `cache` is the existing application dictionary
+and `response` is FastAPI's injected response:
+
+```python
+if equipment_id in cache:
+    response.headers["X-Cache"] = "hit"
+    return cache[equipment_id]
+
+# TODO: On a miss, fetch the row, handle a missing id, and cache a plain
+# response snapshot before returning it with X-Cache set to "miss".
+```
+
+For example, after a successful first read has stored id `7`, another GET for
+`/equipment/7` follows the hit branch: it returns the stored response fields and
+marks the response `X-Cache: hit`. It does not need to call the repository again.
+Use this pattern in the route, then complete the miss branch yourself. Likewise,
+decide where to remove the id after a successful PUT or DELETE; do not invalidate
+before the write commits.
+
 Check your work as you implement each step. The response header lets a client
 observe whether the route used the cache; it does not claim that the request is
 faster.
