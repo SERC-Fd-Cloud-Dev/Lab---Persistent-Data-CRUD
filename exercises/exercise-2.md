@@ -43,26 +43,6 @@ missing, assign **all** write fields and save/commit. The contract uses full PUT
 replacement of name/category/location. An omitted location becomes null. Keep the
 existing id. Repository code handles data; route code chooses HTTP status.
 
-### C4: Partially independent core task — 10 minutes
-
-Implement DELETE end to end. Decide the lookup, database operation, transaction
-boundary and route response yourself. Use the contract below. This task is
-required. There is no prescribed line-by-line solution.
-
-### C5: Integration evidence — 15 minutes
-
-Complete `test_student_write_then_read` in `tests/test_crud.py` using a different
-equipment example. Assert creation, a generated id and a later GET value. The
-provided fixture uses Alembic on a fresh temporary SQLite file and overrides the
-request Session. No test uses your development database.
-
-```bash
-python -m pytest tests/test_crud.py -q
-```
-
-Also restart the development server and GET an earlier record to show file
-persistence.
-
 | Contract | Success | Missing record |
 |---|---|---|
 | POST /equipment | 201 and object with generated id | N/A |
@@ -88,3 +68,32 @@ the existing assertions and use the temporary test database supplied by the
 fixture.
 
 Continue to [Exercise 3](exercise-3.md) for cache-aside reads and invalidation.
+
+## Partially independent core finish
+
+The guided start and supported practice are complete. Finish by applying the
+patterns yourself: make the design decisions, then use the contract and tests to
+check your work. These are required core tasks; the scaffold intentionally leaves
+them unfinished.
+
+### C4: DELETE end to end — 10 minutes
+
+Implement DELETE. Decide how to look up the equipment, perform the database
+operation, set the transaction boundary and choose the route response. A
+successful deletion returns 204 with no response body; an unknown id returns
+404. Keep the existing route signature and contract assertions.
+
+### C5: Write/read integration evidence — 15 minutes
+
+Complete `test_student_write_then_read` in `tests/test_crud.py` using a different
+equipment example. Check that creation succeeds, the response has a generated
+id, and a later GET returns the value you wrote. The supplied fixture applies
+Alembic to a fresh temporary SQLite file and overrides the request Session; it
+does not use your development database.
+
+```bash
+python -m pytest tests/test_crud.py -q
+```
+
+Then restart the development server and GET an earlier record to confirm that a
+committed record remains in the SQLite file.
