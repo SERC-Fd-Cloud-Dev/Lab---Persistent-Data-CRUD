@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Movie Clue Game</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><main><header><p class="eyebrow">Cloud Development practice</p><h1>Movie Clue Game</h1>
+<p>Read a clue, make a guess and build your saved history.</p></header>
+<form id="game"><label for="player">Player nickname</label><input id="player" name="player" required maxlength="40" value="Learner">
+<label for="clue">Choose a clue</label><select id="clue" name="clue">
+<option value="1">1 — Toys come to life when their owner leaves</option>
+<option value="2">2 — A father fish searches the ocean for his son</option>
+<option value="3">3 — A young lion returns to reclaim his kingdom</option></select>
+<label for="title">Your movie title</label><input id="title" name="title" required maxlength="120" autocomplete="off">
+<button id="submit" type="submit">Submit guess</button><button id="refresh" type="button">Refresh history</button></form>
+<p id="message" role="status" aria-live="polite">The interface is ready. Implement the API to save your guesses.</p>
+<section aria-labelledby="history-title"><h2 id="history-title">Saved attempts</h2><p>History belongs to the exact nickname you enter.</p>
+<ul id="history"></ul></section><footer>Use a made-up nickname. This local teaching app has no login.</footer>
+</main><script src="/static/app.js" defer></script></body></html>

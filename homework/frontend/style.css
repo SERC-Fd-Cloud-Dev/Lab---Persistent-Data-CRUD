@@ -1,0 +1,7 @@
+:root {font-family:system-ui,sans-serif;color:#141414;background:#F2F3F5;line-height:1.55}
+*{box-sizing:border-box}body{margin:0}main{max-width:850px;margin:3rem auto;background:white;padding:2.5rem;border-top:8px solid #4A1830}
+h1{font-size:2.5rem;line-height:1.12;margin:.5rem 0 1rem;color:#4A1830}h2{color:#4A1830}.eyebrow{font-weight:700;color:#6A2945}
+form{display:grid;gap:.7rem;margin:2rem 0}label{font-weight:700}input,select,button{font:inherit;padding:.8rem;border:1px solid #6A2945;border-radius:4px;width:100%}
+button{background:#4A1830;color:white;cursor:pointer;font-weight:700}button[type=button]{background:white;color:#4A1830}button:disabled{opacity:.6}
+:focus-visible{outline:3px solid #E0007A;outline-offset:3px}#message{background:#E1D4DA;padding:1rem}li{margin:.7rem 0}footer{font-size:.9rem;margin-top:2rem}
+@media(max-width:600px){main{margin:0;padding:1.2rem}h1{font-size:2rem}}
