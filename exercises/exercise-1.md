@@ -217,7 +217,7 @@ separately. No PostgreSQL server is needed for the core exercise.
 | Symptom | Check and next action |
 |---|---|
 | Missing package | Confirm this terminal uses the repository's virtual environment |
-| No such table/column | Run Alembic current and schema inspection against the same `DATABASE_URL` |
+| No such table/column | Run Alembic current and schema inspection against the same `equipment_URL` |
 | Empty generated migration | Save the model file and check models are imported in `migrations/env.py` |
 | Data vanishes after restart | Check commit and current working directory; relative SQLite URL uses that directory |
 | `PendingRollbackError` | Roll back the failed Session before reusing it; inspect the original exception |

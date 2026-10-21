@@ -54,9 +54,12 @@ request, and is not the response data contract.
 
 ### Worked example: return a cached snapshot
 
-The hit branch can use the snapshot already stored under the integer id. This
-partial route fragment assumes `cache` is the existing application dictionary
-and `response` is FastAPI's injected response:
+In `app/main.py`, `create_app()` initializes the dictionary as
+`app.state.equipment_cache`. Inside the route, bind `cache` to that existing
+dictionary (for example, `cache = app.state.equipment_cache`) before using it.
+The hit branch can then return the snapshot already stored under the integer id.
+This partial route fragment assumes `cache` is that dictionary and `response` is
+FastAPI's injected response:
 
 ```python
 if equipment_id in cache:

@@ -43,6 +43,14 @@ missing, assign **all** write fields and save/commit. The contract uses full PUT
 replacement of name/category/location. An omitted location becomes null. Keep the
 existing id. Repository code handles data; route code chooses HTTP status.
 
+**Checkpoint:** Create an item in Swagger UI, then send a PUT to its
+`/equipment/{id}` path with a changed name and all write fields. Confirm the
+response is 200 with the same id and replaced values. GET the item again and
+confirm the new values persisted. Try a nonexistent id and check for 404. You can
+also run the supplied replacement check:
+`python -m pytest tests/test_crud.py -k test_replace_and_delete -q`. This test
+checks the replacement and its subsequent read before it checks deletion.
+
 | Contract | Success | Missing record |
 |---|---|---|
 | POST /equipment | 201 and object with generated id | N/A |
